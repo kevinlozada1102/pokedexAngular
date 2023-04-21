@@ -1,0 +1,22 @@
+<div class="card text-center">
+  <div class="card-header bg-primary">
+    <div class="card-title text-white">
+      Mi Equipo
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="border" *ngFor="let pokemon of equipoPokemon">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]="pokemon.avatar"  class="border" alt="Imagen del Pokemon">
+        </div>
+        <div class="col-md-8">
+          <input type="text" name="inputIdPoke" id="inputIdPoke" class="form-control" readonly  [(ngModel)]="pokemon.numero">
+          <input type="text" name="inputNombrePoke" id="inputNombrePoke" class="form-control" readonly  [(ngModel)]="pokemon.nombre">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  Rosaura Cotos Sullon - 20/04/2023 -->

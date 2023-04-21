@@ -1,0 +1,80 @@
+<div class="card text-center">
+  <div class="card-header bg-danger">
+    <div class="card-title text-white">
+      Pokedéx
+    </div>
+  </div>
+  <div class="card-body">
+    <div>
+      <form #buscarPorNumeroForm="ngForm" (ngSubmit)="buscarPorNumeroPokedex(buscarPorNumeroForm)">
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="inputNumberPokemon" class="col-form-label">Busca tu pokemon</label>
+          </div>
+          <div class="col-auto">
+            <input type="number" name="inputNumberPokemon" id="inputNumberPokemon" class="form-control" [(ngModel)]="numeroPokedex">
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-danger">Buscar</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="row" *ngIf="pokemonEncontrado != null">
+        <div class="col-md-6">
+          <img [src]="pokemonEncontrado.imagen" alt="Imagen del Pokemon" width="270px">
+        </div>
+        <div class="col-md-6">
+          <br>
+          <form #elegirPokemonForm="ngForm" (ngSubmit)="elegirPokemon(elegirPokemonForm)">
+            <br>
+            <div class="row">
+              <div class="col-3">
+                <label class="col-form-label">Nro</label>
+              </div>
+              <div class="col-9">
+                <input type="text" name="inputIdPokemon" id="inputIdPokemon" class="form-control" readonly  [(ngModel)]="pokemonEncontrado.numero">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3">
+                <label class="col-form-label">Nombre</label>
+              </div>
+              <div class="col-9">
+                <input type="text" name="inputNombrePokemon" id="inputNombrePokemon" class="form-control" readonly  [(ngModel)]="pokemonEncontrado.nombre">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3">
+                <label class="col-form-label">Tipo</label>
+              </div>
+              <div class="col-9">
+                <div *ngFor="let tipo of pokemonEncontrado.tipos">
+                  <input type="text" id="{{ tipo.slot }}" name="{{ tipo.type.name }}" class="form-control" readonly  [(ngModel)]="tipo.type.name">
+                </div>
+
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3">
+                <label class="col-form-label">Avatar</label>
+              </div>
+              <div class="col-9">
+                <img [src]="pokemonEncontrado.avatar"  class="border" alt="Imagen del Pokemon">
+              </div>
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-warning">¡Yo te elijo!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  Rosaura Cotos Sullon - 20/04/2023 -->
